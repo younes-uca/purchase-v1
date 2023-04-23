@@ -28,8 +28,8 @@ export class ClientEditAdminComponent extends AbstractEditController<ClientDto, 
     private _validClientFullName = true;
     private _validClientEmail = true;
 
-    private _validClientCategoryLabel = true;
     private _validClientCategoryReference = true;
+    private _validClientCategoryCode = true;
 
 
 
@@ -119,16 +119,16 @@ export class ClientEditAdminComponent extends AbstractEditController<ClientDto, 
         this._validClientEmail = value;
     }
 
-    get validClientCategoryLabel(): boolean {
-        return this._validClientCategoryLabel;
-    }
-    set validClientCategoryLabel(value: boolean) {
-        this._validClientCategoryLabel = value;
-    }
     get validClientCategoryReference(): boolean {
         return this._validClientCategoryReference;
     }
     set validClientCategoryReference(value: boolean) {
         this._validClientCategoryReference = value;
+    }
+    get validClientCategoryCode(): boolean {
+        return this._validClientCategoryCode;
+    }
+    set validClientCategoryCode(value: boolean) {
+        this._validClientCategoryCode = value;
     }
 }

@@ -25,8 +25,8 @@ export class ClientCreateAdminComponent extends AbstractCreateController<ClientD
 
    private _validClientFullName = true;
    private _validClientEmail = true;
-    private _validClientCategoryLabel = true;
     private _validClientCategoryReference = true;
+    private _validClientCategoryCode = true;
 
     constructor(private datePipe: DatePipe, private clientService: ClientService
      , private stringUtilService: StringUtilService, private roleService: RoleService,  private messageService: MessageService
@@ -124,17 +124,17 @@ export class ClientCreateAdminComponent extends AbstractCreateController<ClientD
          this._validClientEmail = value;
     }
 
-    get validClientCategoryLabel(): boolean {
-        return this._validClientCategoryLabel;
-    }
-    set validClientCategoryLabel(value: boolean) {
-        this._validClientCategoryLabel = value;
-    }
     get validClientCategoryReference(): boolean {
         return this._validClientCategoryReference;
     }
     set validClientCategoryReference(value: boolean) {
         this._validClientCategoryReference = value;
+    }
+    get validClientCategoryCode(): boolean {
+        return this._validClientCategoryCode;
+    }
+    set validClientCategoryCode(value: boolean) {
+        this._validClientCategoryCode = value;
     }
 
 

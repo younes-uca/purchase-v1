@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ClientCategoryDto  extends AuditBaseDto {
 
-    private String label  ;
     private String reference  ;
+    private String code  ;
 
 
 
@@ -22,19 +22,19 @@ public class ClientCategoryDto  extends AuditBaseDto {
 
 
     @Log
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
-
-    @Log
     public String getReference(){
         return this.reference;
     }
     public void setReference(String reference){
         this.reference = reference;
+    }
+
+    @Log
+    public String getCode(){
+        return this.code;
+    }
+    public void setCode(String code){
+        this.code = code;
     }
 
 

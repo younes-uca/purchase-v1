@@ -27,10 +27,10 @@ public class ClientCategoryConverter extends AbstractConverter<ClientCategory, C
         ClientCategory item = new ClientCategory();
             if(StringUtil.isNotEmpty(dto.getId()))
                 item.setId(dto.getId());
-            if(StringUtil.isNotEmpty(dto.getLabel()))
-                item.setLabel(dto.getLabel());
             if(StringUtil.isNotEmpty(dto.getReference()))
                 item.setReference(dto.getReference());
+            if(StringUtil.isNotEmpty(dto.getCode()))
+                item.setCode(dto.getCode());
 
 
         return item;
@@ -45,10 +45,10 @@ public class ClientCategoryConverter extends AbstractConverter<ClientCategory, C
             ClientCategoryDto dto = new ClientCategoryDto();
             if(StringUtil.isNotEmpty(item.getId()))
                 dto.setId(item.getId());
-            if(StringUtil.isNotEmpty(item.getLabel()))
-                dto.setLabel(item.getLabel());
             if(StringUtil.isNotEmpty(item.getReference()))
                 dto.setReference(item.getReference());
+            if(StringUtil.isNotEmpty(item.getCode()))
+                dto.setCode(item.getCode());
 
 
         return dto;

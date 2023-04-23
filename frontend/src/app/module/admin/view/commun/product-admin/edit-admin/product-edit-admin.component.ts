@@ -23,8 +23,8 @@ import {ProductCriteria} from 'src/app/controller/criteria/ProductCriteria.model
 export class ProductEditAdminComponent extends AbstractEditController<ProductDto, ProductCriteria, ProductService>   implements OnInit {
 
 
+    private _validProductCode = true;
     private _validProductReference = true;
-    private _validProductLabel = true;
 
 
 
@@ -41,13 +41,21 @@ export class ProductEditAdminComponent extends AbstractEditController<ProductDto
 }
 
     public setValidation(value : boolean){
+        this.validProductCode = value;
         this.validProductReference = value;
-        this.validProductLabel = value;
         }
     public validateForm(): void{
         this.errorMessages = new Array<string>();
+        this.validateProductCode();
         this.validateProductReference();
-        this.validateProductLabel();
+    }
+    public validateProductCode(){
+        if (this.stringUtilService.isEmpty(this.item.code)) {
+            this.errorMessages.push('Code non valide');
+            this.validProductCode = false;
+        } else {
+            this.validProductCode = true;
+        }
     }
     public validateProductReference(){
         if (this.stringUtilService.isEmpty(this.item.reference)) {
@@ -57,31 +65,23 @@ export class ProductEditAdminComponent extends AbstractEditController<ProductDto
             this.validProductReference = true;
         }
     }
-    public validateProductLabel(){
-        if (this.stringUtilService.isEmpty(this.item.label)) {
-            this.errorMessages.push('Label non valide');
-            this.validProductLabel = false;
-        } else {
-            this.validProductLabel = true;
-        }
+
+
+
+
+
+
+    get validProductCode(): boolean {
+        return this._validProductCode;
     }
-
-
-
-
-
-
+    set validProductCode(value: boolean) {
+        this._validProductCode = value;
+    }
     get validProductReference(): boolean {
         return this._validProductReference;
     }
     set validProductReference(value: boolean) {
         this._validProductReference = value;
-    }
-    get validProductLabel(): boolean {
-        return this._validProductLabel;
-    }
-    set validProductLabel(value: boolean) {
-        this._validProductLabel = value;
     }
 
 }

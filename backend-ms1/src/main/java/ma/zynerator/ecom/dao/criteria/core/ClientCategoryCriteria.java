@@ -6,27 +6,14 @@ import java.util.List;
 
 public class ClientCategoryCriteria extends  BaseCriteria  {
 
-    private String label;
-    private String labelLike;
     private String reference;
     private String referenceLike;
+    private String code;
+    private String codeLike;
 
 
 
     public ClientCategoryCriteria(){}
-
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
-    public String getLabelLike(){
-        return this.labelLike;
-    }
-    public void setLabelLike(String labelLike){
-        this.labelLike = labelLike;
-    }
 
     public String getReference(){
         return this.reference;
@@ -39,6 +26,19 @@ public class ClientCategoryCriteria extends  BaseCriteria  {
     }
     public void setReferenceLike(String referenceLike){
         this.referenceLike = referenceLike;
+    }
+
+    public String getCode(){
+        return this.code;
+    }
+    public void setCode(String code){
+        this.code = code;
+    }
+    public String getCodeLike(){
+        return this.codeLike;
+    }
+    public void setCodeLike(String codeLike){
+        this.codeLike = codeLike;
     }
 
 

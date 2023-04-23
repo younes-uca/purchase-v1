@@ -7,8 +7,6 @@ import {HomeComponent} from './module/home/home.component';
 
 import {LoginAdminComponent} from './module/admin/login-admin/login-admin.component';
 import {RegisterAdminComponent} from './module/admin/register-admin/register-admin.component';
-import {LoginAgentComponent} from './module/agent/login-agent/login-agent.component';
-import {RegisterAgentComponent} from './module/agent/register-agent/register-agent.component';
 @NgModule({
   imports: [
     RouterModule.forRoot(
@@ -16,8 +14,6 @@ import {RegisterAgentComponent} from './module/agent/register-agent/register-age
           { path: '', component: HomeComponent },
         {path: 'admin/login', component: LoginAdminComponent },
         {path: 'admin/register', component: RegisterAdminComponent },
-        {path: 'agent/login', component: LoginAgentComponent },
-        {path: 'agent/register', component: RegisterAgentComponent },
          {
           path: 'app', // '\'' + root + '\'',
           component: AppMainComponent,
@@ -25,11 +21,6 @@ import {RegisterAgentComponent} from './module/agent/register-agent/register-age
             {
               path: 'admin',
               loadChildren: () => import( './module/admin/admin-routing.module').then(x => x.AdminRoutingModule),
-              canActivate: [AuthGuard],
-            },
-            {
-              path: 'agent',
-              loadChildren: () => import( './module/agent/agent-routing.module').then(x => x.AgentRoutingModule),
               canActivate: [AuthGuard],
             },
             { path: 'denied', component: AccessDeniedComponent },

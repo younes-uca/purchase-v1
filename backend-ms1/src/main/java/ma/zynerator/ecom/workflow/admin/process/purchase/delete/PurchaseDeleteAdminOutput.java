@@ -7,9 +7,9 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.math.BigDecimal;
 
-import ma.zynerator.ecom.ws.dto.PurchaseItemDto;
 import ma.zynerator.ecom.ws.dto.ProductDto;
 import ma.zynerator.ecom.ws.dto.ClientDto;
+import ma.zynerator.ecom.ws.dto.PurchaseItemDto;
 import ma.zynerator.ecom.zynerator.audit.Log;
 import ma.zynerator.ecom.zynerator.dto.AuditBaseDto;
 import com.fasterxml.jackson.annotation.JsonInclude;

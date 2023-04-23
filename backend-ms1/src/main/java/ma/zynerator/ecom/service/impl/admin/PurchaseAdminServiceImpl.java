@@ -20,8 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ma.zynerator.ecom.bean.core.PurchaseItem;
 
-import ma.zynerator.ecom.service.facade.admin.PurchaseItemAdminService ;
 import ma.zynerator.ecom.service.facade.admin.ClientAdminService ;
+import ma.zynerator.ecom.service.facade.admin.PurchaseItemAdminService ;
 
 
 import java.util.List;
@@ -79,9 +79,9 @@ PurchaseHistoryDao> implements PurchaseAdminService {
     }
 
     @Autowired
-    private PurchaseItemAdminService purchaseItemService ;
-    @Autowired
     private ClientAdminService clientService ;
+    @Autowired
+    private PurchaseItemAdminService purchaseItemService ;
     public PurchaseAdminServiceImpl(PurchaseDao dao, PurchaseHistoryDao historyDao) {
         super(dao, historyDao);
     }

@@ -10,13 +10,13 @@
 
     "productTabPan": "Product",
     "productHeader": "Liste des products",
+    "productCode": "Code",
     "productReference": "Reference",
-    "productLabel": "Label",
 
     "clientCategoryTabPan": "Client category",
     "clientCategoryHeader": "Liste des client categorys",
-    "clientCategoryLabel": "Label",
     "clientCategoryReference": "Reference",
+    "clientCategoryCode": "Code",
 
     "purchaseTabPan": "Purchase",
     "purchaseHeader": "Liste des purchases",

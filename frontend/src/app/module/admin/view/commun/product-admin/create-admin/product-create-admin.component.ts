@@ -21,8 +21,8 @@ export class ProductCreateAdminComponent extends AbstractCreateController<Produc
 
 
 
+   private _validProductCode = true;
    private _validProductReference = true;
-   private _validProductLabel = true;
 
     constructor(private datePipe: DatePipe, private productService: ProductService
      , private stringUtilService: StringUtilService, private roleService: RoleService,  private messageService: MessageService
@@ -40,18 +40,26 @@ export class ProductCreateAdminComponent extends AbstractCreateController<Produc
 
 
     public setValidation(value: boolean){
+        this.validProductCode = value;
         this.validProductReference = value;
-        this.validProductLabel = value;
     }
 
 
 
     public validateForm(): void{
         this.errorMessages = new Array<string>();
+        this.validateProductCode();
         this.validateProductReference();
-        this.validateProductLabel();
     }
 
+    public validateProductCode(){
+        if (this.stringUtilService.isEmpty(this.item.code)) {
+        this.errorMessages.push('Code non valide');
+        this.validProductCode = false;
+        } else {
+            this.validProductCode = true;
+        }
+    }
     public validateProductReference(){
         if (this.stringUtilService.isEmpty(this.item.reference)) {
         this.errorMessages.push('Reference non valide');
@@ -60,33 +68,25 @@ export class ProductCreateAdminComponent extends AbstractCreateController<Produc
             this.validProductReference = true;
         }
     }
-    public validateProductLabel(){
-        if (this.stringUtilService.isEmpty(this.item.label)) {
-        this.errorMessages.push('Label non valide');
-        this.validProductLabel = false;
-        } else {
-            this.validProductLabel = true;
-        }
+
+
+
+
+
+
+    get validProductCode(): boolean {
+        return this._validProductCode;
     }
 
-
-
-
-
-
+    set validProductCode(value: boolean) {
+         this._validProductCode = value;
+    }
     get validProductReference(): boolean {
         return this._validProductReference;
     }
 
     set validProductReference(value: boolean) {
          this._validProductReference = value;
-    }
-    get validProductLabel(): boolean {
-        return this._validProductLabel;
-    }
-
-    set validProductLabel(value: boolean) {
-         this._validProductLabel = value;
     }
 
 

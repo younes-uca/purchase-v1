@@ -45,8 +45,8 @@ export class ProductListAdminComponent extends AbstractListController<ProductDto
 
     public initCol() {
         this.cols = [
+            {field: 'code', header: 'Code'},
             {field: 'reference', header: 'Reference'},
-            {field: 'label', header: 'Label'},
         ];
     }
 
@@ -58,14 +58,14 @@ export class ProductListAdminComponent extends AbstractListController<ProductDto
    public prepareColumnExport() : void {
         this.exportData = this.items.map(e => {
             return {
+                 'Code': e.code ,
                  'Reference': e.reference ,
-                 'Label': e.label ,
             }
         });
 
         this.criteriaData = [{
+            'Code': this.criteria.code ? this.criteria.code : environment.emptyForExport ,
             'Reference': this.criteria.reference ? this.criteria.reference : environment.emptyForExport ,
-            'Label': this.criteria.label ? this.criteria.label : environment.emptyForExport ,
         }];
       }
 }

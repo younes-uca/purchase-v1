@@ -24,9 +24,9 @@ public class ClientCategory   extends AuditBusinessObject     {
     private Long id;
 
     @Column(length = 500)
-    private String label;
-    @Column(length = 500)
     private String reference;
+    @Column(length = 500)
+    private String code;
 
 
 
@@ -46,22 +46,22 @@ public class ClientCategory   extends AuditBusinessObject     {
     public void setId(Long id){
         this.id = id;
     }
-    public String getLabel(){
-        return this.label;
-    }
-    public void setLabel(String label){
-        this.label = label;
-    }
     public String getReference(){
         return this.reference;
     }
     public void setReference(String reference){
         this.reference = reference;
     }
+    public String getCode(){
+        return this.code;
+    }
+    public void setCode(String code){
+        this.code = code;
+    }
 
     @Transient
     public String getLabel() {
-        label = label;
+        label = reference;
         return label;
     }
 

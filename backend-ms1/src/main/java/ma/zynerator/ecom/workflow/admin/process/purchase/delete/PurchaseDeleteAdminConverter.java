@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 import ma.zynerator.ecom.zynerator.util.ListUtil;
 
 
-import ma.zynerator.ecom.ws.converter.PurchaseItemConverter;
 import ma.zynerator.ecom.ws.converter.ProductConverter;
 import ma.zynerator.ecom.ws.converter.ClientConverter;
+import ma.zynerator.ecom.ws.converter.PurchaseItemConverter;
 import ma.zynerator.ecom.zynerator.util.StringUtil;
 import ma.zynerator.ecom.zynerator.process.AbstractProcessConverter;
 import ma.zynerator.ecom.zynerator.util.DateUtil;
@@ -17,11 +17,11 @@ import ma.zynerator.ecom.bean.core.Purchase;
 public class PurchaseDeleteAdminConverter extends AbstractProcessConverter<PurchaseDeleteAdminInput,PurchaseDeleteAdminOutput,Purchase> {
 
     @Autowired
-    private PurchaseItemConverter purchaseItemConverter ;
-    @Autowired
     private ProductConverter productConverter ;
     @Autowired
     private ClientConverter clientConverter ;
+    @Autowired
+    private PurchaseItemConverter purchaseItemConverter ;
     private boolean client;
     private boolean purchaseItems;
 
@@ -88,12 +88,6 @@ public class PurchaseDeleteAdminConverter extends AbstractProcessConverter<Purch
 
 
 
-    public PurchaseItemConverter getPurchaseItemConverter(){
-        return this.purchaseItemConverter;
-    }
-    public void setPurchaseItemConverter(PurchaseItemConverter purchaseItemConverter ){
-        this.purchaseItemConverter = purchaseItemConverter;
-    }
     public ProductConverter getProductConverter(){
         return this.productConverter;
     }
@@ -105,6 +99,12 @@ public class PurchaseDeleteAdminConverter extends AbstractProcessConverter<Purch
     }
     public void setClientConverter(ClientConverter clientConverter ){
         this.clientConverter = clientConverter;
+    }
+    public PurchaseItemConverter getPurchaseItemConverter(){
+        return this.purchaseItemConverter;
+    }
+    public void setPurchaseItemConverter(PurchaseItemConverter purchaseItemConverter ){
+        this.purchaseItemConverter = purchaseItemConverter;
     }
 
 

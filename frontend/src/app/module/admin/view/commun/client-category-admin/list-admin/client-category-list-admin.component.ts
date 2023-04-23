@@ -45,8 +45,8 @@ export class ClientCategoryListAdminComponent extends AbstractListController<Cli
 
     public initCol() {
         this.cols = [
-            {field: 'label', header: 'Label'},
             {field: 'reference', header: 'Reference'},
+            {field: 'code', header: 'Code'},
         ];
     }
 
@@ -58,14 +58,14 @@ export class ClientCategoryListAdminComponent extends AbstractListController<Cli
    public prepareColumnExport() : void {
         this.exportData = this.items.map(e => {
             return {
-                 'Label': e.label ,
                  'Reference': e.reference ,
+                 'Code': e.code ,
             }
         });
 
         this.criteriaData = [{
-            'Label': this.criteria.label ? this.criteria.label : environment.emptyForExport ,
             'Reference': this.criteria.reference ? this.criteria.reference : environment.emptyForExport ,
+            'Code': this.criteria.code ? this.criteria.code : environment.emptyForExport ,
         }];
       }
 }

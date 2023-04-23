@@ -51,7 +51,7 @@
                                                                     <div class="field col-11 md:col-3">
                                                                         <label>Product<span style="color: red;">*</span></label>
                                                                         <p-dropdown  appendTo="body"  [options]="products" [(ngModel)]="purchaseItemsElement.product"
-                                                                                     id="1"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="label"
+                                                                                     id="1"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="reference"
                                                                                      placeholder="Product"  [ngClass]="{'ng-invalid ng-dirty' : !validPurchaseItemsProduct}" >
                                                                         </p-dropdown>
                                                                         <small class='p-error' *ngIf='!validPurchaseItemsProduct'>Product est obligatoire.</small>
@@ -85,7 +85,7 @@
                                                             </ng-template>
                                                             <ng-template pTemplate="body" let-p>
                                                                 <tr>
-                                                                            <td>{{p.product?.label}}</td>
+                                                                            <td>{{p.product?.reference}}</td>
                                                                                 <td>{{p.price}}</td>
                                                                                 <td>{{p.quantity}}</td>
                                                                     <td>

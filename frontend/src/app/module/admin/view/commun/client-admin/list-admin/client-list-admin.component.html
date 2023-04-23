@@ -28,7 +28,7 @@
                         </span>
                         <span class=" p-float-label mr-3 align-search-items mt-4">
                             <p-dropdown [options]="clientCategorys" [(ngModel)]="criteria.clientCategory" id="3" [filter]="true"
-                                        [showClear]="true"  placeholder="{{'Client category' | translate}}" optionLabel="label">
+                                        [showClear]="true"  placeholder="{{'Client category' | translate}}" optionLabel="reference">
                             </p-dropdown>
                         </span>
                 </div>
@@ -40,7 +40,7 @@
 
 
             <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
-                    [globalFilterFields]="['fullName', 'email', 'clientCategorylabel']" [(selection)]="selections"
+                    [globalFilterFields]="['fullName', 'email', 'clientCategoryreference']" [(selection)]="selections"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                     currentPageReportTemplate="{{'Les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
                     [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
@@ -99,7 +99,7 @@
                         <td>{{element.email}}</td>
                             
                             
-                        <td>{{element.clientCategory?.label}}</td>
+                        <td>{{element.clientCategory?.reference}}</td>
                             
                         <td>
                             <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-success mr-2" (click)="edit(element)"></button>

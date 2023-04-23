@@ -98,22 +98,22 @@ public class EcomApplication {
 
 
     private void createProduct(){
+        String code = "code";
         String reference = "reference";
-        String label = "label";
         for (int i = 1; i < 100; i++) {
             Product item = new Product();
+            item.setCode(fakeString(code, i));
             item.setReference(fakeString(reference, i));
-            item.setLabel(fakeString(label, i));
             productService.create(item);
         }
     }
     private void createClientCategory(){
-        String label = "label";
         String reference = "reference";
+        String code = "code";
         for (int i = 1; i < 100; i++) {
             ClientCategory item = new ClientCategory();
-            item.setLabel(fakeString(label, i));
             item.setReference(fakeString(reference, i));
+            item.setCode(fakeString(code, i));
             clientCategoryService.create(item);
         }
     }

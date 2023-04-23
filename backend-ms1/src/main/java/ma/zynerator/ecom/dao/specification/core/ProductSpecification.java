@@ -16,8 +16,8 @@ public class ProductSpecification extends  AbstractSpecification<ProductCriteria
     @Override
     public void constructPredicates() {
         addPredicateId("id", criteria);
+        addPredicate("code", criteria.getCode(),criteria.getCodeLike());
         addPredicate("reference", criteria.getReference(),criteria.getReferenceLike());
-        addPredicate("label", criteria.getLabel(),criteria.getLabelLike());
     }
 
     public ProductSpecification(ProductCriteria criteria) {

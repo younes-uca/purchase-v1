@@ -51,7 +51,7 @@ export class ClientListAdminComponent extends AbstractListController<ClientDto, 
         this.cols = [
             {field: 'fullName', header: 'Full name'},
             {field: 'email', header: 'Email'},
-            {field: 'clientCategory?.label', header: 'Client category'},
+            {field: 'clientCategory?.reference', header: 'Client category'},
         ];
     }
 
@@ -71,14 +71,14 @@ export class ClientListAdminComponent extends AbstractListController<ClientDto, 
             return {
                  'Full name': e.fullName ,
                  'Email': e.email ,
-                'Client category': e.clientCategory?.label ,
+                'Client category': e.clientCategory?.reference ,
             }
         });
 
         this.criteriaData = [{
             'Full name': this.criteria.fullName ? this.criteria.fullName : environment.emptyForExport ,
             'Email': this.criteria.email ? this.criteria.email : environment.emptyForExport ,
-        //'Client category': this.criteria.clientCategory?.label ? this.criteria.clientCategory?.label : environment.emptyForExport ,
+        //'Client category': this.criteria.clientCategory?.reference ? this.criteria.clientCategory?.reference : environment.emptyForExport ,
         }];
       }
 }

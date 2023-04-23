@@ -13,12 +13,12 @@ import {PurchaseService} from 'src/app/controller/service/Purchase.service';
 import {PurchaseDto} from 'src/app/controller/model/Purchase.model';
 import {PurchaseCriteria} from 'src/app/controller/criteria/PurchaseCriteria.model';
 
-import {PurchaseItemDto} from 'src/app/controller/model/PurchaseItem.model';
-import {PurchaseItemService} from 'src/app/controller/service/PurchaseItem.service';
 import {ProductDto} from 'src/app/controller/model/Product.model';
 import {ProductService} from 'src/app/controller/service/Product.service';
 import {ClientDto} from 'src/app/controller/model/Client.model';
 import {ClientService} from 'src/app/controller/service/Client.service';
+import {PurchaseItemDto} from 'src/app/controller/model/PurchaseItem.model';
+import {PurchaseItemService} from 'src/app/controller/service/PurchaseItem.service';
 @Component({
   selector: 'app-purchase-view-admin',
   templateUrl: './purchase-view-admin.component.html'
@@ -31,7 +31,7 @@ export class PurchaseViewAdminComponent extends AbstractViewController<PurchaseD
     constructor(private datePipe: DatePipe, private purchaseService: PurchaseService
                 , private stringUtilService: StringUtilService, private roleService: RoleService,  private messageService: MessageService
                 , private router: Router  
-, private purchaseItemService: PurchaseItemService, private productService: ProductService, private clientService: ClientService
+, private productService: ProductService, private clientService: ClientService, private purchaseItemService: PurchaseItemService
     ){
         super(datePipe, purchaseService, messageService, roleService, router, stringUtilService);
     }

@@ -25,7 +25,7 @@ ProductHistoryDao> implements ProductAgentService {
 
 
     public Product findByReferenceEntity(Product t){
-        return  dao.findByReference(t.getReference());
+        return  dao.findByCode(t.getCode());
     }
 
 

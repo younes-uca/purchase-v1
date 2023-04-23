@@ -19,7 +19,7 @@ public class ClientSpecification extends  AbstractSpecification<ClientCriteria, 
         addPredicate("fullName", criteria.getFullName(),criteria.getFullNameLike());
         addPredicate("email", criteria.getEmail(),criteria.getEmailLike());
         addPredicateFk("clientCategory","id", criteria.getClientCategory()==null?null:criteria.getClientCategory().getId());
-        addPredicateFk("clientCategory","reference", criteria.getClientCategory()==null?null:criteria.getClientCategory().getReference());
+        addPredicateFk("clientCategory","code", criteria.getClientCategory()==null?null:criteria.getClientCategory().getCode());
     }
 
     public ClientSpecification(ClientCriteria criteria) {

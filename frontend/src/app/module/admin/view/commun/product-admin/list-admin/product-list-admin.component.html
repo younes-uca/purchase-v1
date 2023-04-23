@@ -19,12 +19,12 @@
 
                 <div class="align-form-search">
                         <span class=" p-float-label mr-3 align-search-items mt-4">
-                            <input class="mr-2" pInputText id="1" type="text"  [(ngModel)]="criteria.referenceLike">
-                            <label for="1">{{'Reference' | translate}}</label>
+                            <input class="mr-2" pInputText id="1" type="text"  [(ngModel)]="criteria.codeLike">
+                            <label for="1">{{'Code' | translate}}</label>
                         </span>
                         <span class=" p-float-label mr-3 align-search-items mt-4">
-                            <input class="mr-2" pInputText id="2" type="text"  [(ngModel)]="criteria.labelLike">
-                            <label for="2">{{'Label' | translate}}</label>
+                            <input class="mr-2" pInputText id="2" type="text"  [(ngModel)]="criteria.referenceLike">
+                            <label for="2">{{'Reference' | translate}}</label>
                         </span>
                 </div>
 
@@ -35,7 +35,7 @@
 
 
             <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
-                    [globalFilterFields]="['reference', 'label']" [(selection)]="selections"
+                    [globalFilterFields]="['code', 'reference']" [(selection)]="selections"
                     [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                     currentPageReportTemplate="{{'Les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
                     [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
@@ -54,20 +54,20 @@
                             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                         </th>
                                 
+                        <th pSortableColumn="code">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Code' | translate}}</span>
+                                <p-sortIcon field="code"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.code" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
                         <th pSortableColumn="reference">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'Reference' | translate}}</span>
                                 <p-sortIcon field="reference"></p-sortIcon>
                                 <p-columnFilter type="text" field="element.reference" display="menu" class="ml-auto"></p-columnFilter>
-                            </div>
-                        </th>
-                                
-                                
-                        <th pSortableColumn="label">
-                            <div class="p-d-flex p-jc-between p-ai-center">
-                                <span>{{'Label' | translate}}</span>
-                                <p-sortIcon field="label"></p-sortIcon>
-                                <p-columnFilter type="text" field="element.label" display="menu" class="ml-auto"></p-columnFilter>
                             </div>
                         </th>
                                 
@@ -80,10 +80,10 @@
                             <p-tableCheckbox [value]="element"></p-tableCheckbox>
                         </td>
                             
+                        <td>{{element.code}}</td>
+                            
+                            
                         <td>{{element.reference}}</td>
-                            
-                            
-                        <td>{{element.label}}</td>
                             
                         <td>
                             <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-success mr-2" (click)="edit(element)"></button>

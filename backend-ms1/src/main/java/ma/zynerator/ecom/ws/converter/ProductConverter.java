@@ -27,10 +27,10 @@ public class ProductConverter extends AbstractConverter<Product, ProductDto, Pro
         Product item = new Product();
             if(StringUtil.isNotEmpty(dto.getId()))
                 item.setId(dto.getId());
+            if(StringUtil.isNotEmpty(dto.getCode()))
+                item.setCode(dto.getCode());
             if(StringUtil.isNotEmpty(dto.getReference()))
                 item.setReference(dto.getReference());
-            if(StringUtil.isNotEmpty(dto.getLabel()))
-                item.setLabel(dto.getLabel());
 
 
         return item;
@@ -45,10 +45,10 @@ public class ProductConverter extends AbstractConverter<Product, ProductDto, Pro
             ProductDto dto = new ProductDto();
             if(StringUtil.isNotEmpty(item.getId()))
                 dto.setId(item.getId());
+            if(StringUtil.isNotEmpty(item.getCode()))
+                dto.setCode(item.getCode());
             if(StringUtil.isNotEmpty(item.getReference()))
                 dto.setReference(item.getReference());
-            if(StringUtil.isNotEmpty(item.getLabel()))
-                dto.setLabel(item.getLabel());
 
 
         return dto;

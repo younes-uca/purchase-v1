@@ -25,7 +25,7 @@ ClientCategoryHistoryDao> implements ClientCategoryAdminService {
 
 
     public ClientCategory findByReferenceEntity(ClientCategory t){
-        return  dao.findByReference(t.getReference());
+        return  dao.findByCode(t.getCode());
     }
 
 

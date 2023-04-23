@@ -19,7 +19,7 @@ public class PurchaseItemSpecification extends  AbstractSpecification<PurchaseIt
         addPredicateBigDecimal("price", criteria.getPrice(), criteria.getPriceMin(), criteria.getPriceMax());
         addPredicateBigDecimal("quantity", criteria.getQuantity(), criteria.getQuantityMin(), criteria.getQuantityMax());
         addPredicateFk("product","id", criteria.getProduct()==null?null:criteria.getProduct().getId());
-        addPredicateFk("product","reference", criteria.getProduct()==null?null:criteria.getProduct().getReference());
+        addPredicateFk("product","code", criteria.getProduct()==null?null:criteria.getProduct().getCode());
         addPredicateFk("purchase","id", criteria.getPurchase()==null?null:criteria.getPurchase().getId());
         addPredicateFk("purchase","reference", criteria.getPurchase()==null?null:criteria.getPurchase().getReference());
     }

@@ -6,17 +6,17 @@
 
 
                                         <div class="field col-12 md:col-6">
-                                            <label for="1">{{'productReference' | translate}}<span style="color: red;">*</span></label>
-                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'productReference' | translate}}" id="1" [(ngModel)]="item.reference"
-                                                    [ngClass]="{'ng-invalid ng-dirty' : !validProductReference}"  />
-                                            <small class='p-error' *ngIf='!validProductReference'>Reference est obligatoire.</small>
+                                            <label for="1">{{'productCode' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'productCode' | translate}}" id="1" [(ngModel)]="item.code"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validProductCode}"  />
+                                            <small class='p-error' *ngIf='!validProductCode'>Code est obligatoire.</small>
                                         </div>
 
                                         <div class="field col-12 md:col-6">
-                                            <label for="2">{{'productLabel' | translate}}<span style="color: red;">*</span></label>
-                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'productLabel' | translate}}" id="2" [(ngModel)]="item.label"
-                                                    [ngClass]="{'ng-invalid ng-dirty' : !validProductLabel}"  />
-                                            <small class='p-error' *ngIf='!validProductLabel'>Label est obligatoire.</small>
+                                            <label for="2">{{'productReference' | translate}}<span style="color: red;">*</span></label>
+                                            <input   appendTo="body" class="mb-2 mr-2" type="text" pInputText placeholder="{{'productReference' | translate}}" id="2" [(ngModel)]="item.reference"
+                                                    [ngClass]="{'ng-invalid ng-dirty' : !validProductReference}"  />
+                                            <small class='p-error' *ngIf='!validProductReference'>Reference est obligatoire.</small>
                                         </div>
                         </div>
                     </p-tabPanel>

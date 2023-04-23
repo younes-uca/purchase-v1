@@ -16,11 +16,11 @@ import ma.zynerator.ecom.ws.dto.PurchaseDto;
 public class PurchaseConverter extends AbstractConverter<Purchase, PurchaseDto, PurchaseHistory> {
 
     @Autowired
-    private PurchaseItemConverter purchaseItemConverter ;
-    @Autowired
     private ProductConverter productConverter ;
     @Autowired
     private ClientConverter clientConverter ;
+    @Autowired
+    private PurchaseItemConverter purchaseItemConverter ;
     private boolean client;
     private boolean purchaseItems;
 
@@ -97,12 +97,6 @@ public class PurchaseConverter extends AbstractConverter<Purchase, PurchaseDto, 
     }
 
 
-    public PurchaseItemConverter getPurchaseItemConverter(){
-        return this.purchaseItemConverter;
-    }
-    public void setPurchaseItemConverter(PurchaseItemConverter purchaseItemConverter ){
-        this.purchaseItemConverter = purchaseItemConverter;
-    }
     public ProductConverter getProductConverter(){
         return this.productConverter;
     }
@@ -114,6 +108,12 @@ public class PurchaseConverter extends AbstractConverter<Purchase, PurchaseDto, 
     }
     public void setClientConverter(ClientConverter clientConverter ){
         this.clientConverter = clientConverter;
+    }
+    public PurchaseItemConverter getPurchaseItemConverter(){
+        return this.purchaseItemConverter;
+    }
+    public void setPurchaseItemConverter(PurchaseItemConverter purchaseItemConverter ){
+        this.purchaseItemConverter = purchaseItemConverter;
     }
     public boolean  isClient(){
         return this.client;

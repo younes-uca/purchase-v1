@@ -21,8 +21,8 @@ export class ClientCategoryCreateAdminComponent extends AbstractCreateController
 
 
 
-   private _validClientCategoryLabel = true;
    private _validClientCategoryReference = true;
+   private _validClientCategoryCode = true;
 
     constructor(private datePipe: DatePipe, private clientCategoryService: ClientCategoryService
      , private stringUtilService: StringUtilService, private roleService: RoleService,  private messageService: MessageService
@@ -40,26 +40,18 @@ export class ClientCategoryCreateAdminComponent extends AbstractCreateController
 
 
     public setValidation(value: boolean){
-        this.validClientCategoryLabel = value;
         this.validClientCategoryReference = value;
+        this.validClientCategoryCode = value;
     }
 
 
 
     public validateForm(): void{
         this.errorMessages = new Array<string>();
-        this.validateClientCategoryLabel();
         this.validateClientCategoryReference();
+        this.validateClientCategoryCode();
     }
 
-    public validateClientCategoryLabel(){
-        if (this.stringUtilService.isEmpty(this.item.label)) {
-        this.errorMessages.push('Label non valide');
-        this.validClientCategoryLabel = false;
-        } else {
-            this.validClientCategoryLabel = true;
-        }
-    }
     public validateClientCategoryReference(){
         if (this.stringUtilService.isEmpty(this.item.reference)) {
         this.errorMessages.push('Reference non valide');
@@ -68,25 +60,33 @@ export class ClientCategoryCreateAdminComponent extends AbstractCreateController
             this.validClientCategoryReference = true;
         }
     }
-
-
-
-
-
-
-    get validClientCategoryLabel(): boolean {
-        return this._validClientCategoryLabel;
+    public validateClientCategoryCode(){
+        if (this.stringUtilService.isEmpty(this.item.code)) {
+        this.errorMessages.push('Code non valide');
+        this.validClientCategoryCode = false;
+        } else {
+            this.validClientCategoryCode = true;
+        }
     }
 
-    set validClientCategoryLabel(value: boolean) {
-         this._validClientCategoryLabel = value;
-    }
+
+
+
+
+
     get validClientCategoryReference(): boolean {
         return this._validClientCategoryReference;
     }
 
     set validClientCategoryReference(value: boolean) {
          this._validClientCategoryReference = value;
+    }
+    get validClientCategoryCode(): boolean {
+        return this._validClientCategoryCode;
+    }
+
+    set validClientCategoryCode(value: boolean) {
+         this._validClientCategoryCode = value;
     }
 
 

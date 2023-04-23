@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ProductDao extends AbstractRepository<Product,Long>  {
-    Product findByReference(String reference);
-    int deleteByReference(String reference);
+    Product findByCode(String code);
+    int deleteByCode(String code);
 
 
 }

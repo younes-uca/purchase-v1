@@ -16,8 +16,8 @@ public class ClientCategorySpecification extends  AbstractSpecification<ClientCa
     @Override
     public void constructPredicates() {
         addPredicateId("id", criteria);
-        addPredicate("label", criteria.getLabel(),criteria.getLabelLike());
         addPredicate("reference", criteria.getReference(),criteria.getReferenceLike());
+        addPredicate("code", criteria.getCode(),criteria.getCodeLike());
     }
 
     public ClientCategorySpecification(ClientCategoryCriteria criteria) {

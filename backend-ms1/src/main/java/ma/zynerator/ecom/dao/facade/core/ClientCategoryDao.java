@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ClientCategoryDao extends AbstractRepository<ClientCategory,Long>  {
-    ClientCategory findByReference(String reference);
-    int deleteByReference(String reference);
+    ClientCategory findByCode(String code);
+    int deleteByCode(String code);
 
 
 }

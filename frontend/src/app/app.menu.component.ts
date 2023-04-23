@@ -61,7 +61,6 @@ export class AppMenuComponent implements OnInit {
   modelsuperadmin:any[];
   modelanonymous: any[];
     modeladmin : any[];
-  modelagent : any[];
   constructor(public app: AppComponent,
    public appMain: AppMainComponent,
    private roleService: RoleService,
@@ -108,47 +107,6 @@ export class AppMenuComponent implements OnInit {
                       label: 'Liste product',
                       icon: 'pi pi-fw pi-plus-circle',
                       routerLink: ['/app/admin/commun/product/list']
-                    },
-                ]
-              },
-    ]
-    this.modelagent =
-      [
-              {
-                label: 'Purchase',
-                icon: 'pi pi-wallet',
-                items:[
-                    {
-                      label: 'Liste purchase',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/agent/purchase/purchase/list']
-                    },
-                ]
-              },
-              {
-                label: 'Collaborator',
-                icon: 'pi pi-wallet',
-                items:[
-                    {
-                      label: 'Liste client category',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/agent/commun/client-category/list']
-                    },
-                    {
-                      label: 'Liste client',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/agent/commun/client/list']
-                    },
-                ]
-              },
-              {
-                label: 'Product',
-                icon: 'pi pi-wallet',
-                items:[
-                    {
-                      label: 'Liste product',
-                      icon: 'pi pi-fw pi-plus-circle',
-                      routerLink: ['/app/agent/commun/product/list']
                     },
                 ]
               },
