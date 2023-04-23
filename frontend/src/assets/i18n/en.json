@@ -1,0 +1,45 @@
+{
+    "new" : "New",
+    "search": "Search",
+    "export": "Export",
+    "validate": "Validate",
+    "from-to": "Elements from {first} to {last} (total {totalRecords})",
+    "search": "Seach...",
+    "delete": "Delete",
+
+
+    "productTabPan": "Product",
+    "productHeader": "Liste des products",
+    "productReference": "Reference",
+    "productLabel": "Label",
+
+    "clientCategoryTabPan": "Client category",
+    "clientCategoryHeader": "Liste des client categorys",
+    "clientCategoryLabel": "Label",
+    "clientCategoryReference": "Reference",
+
+    "purchaseTabPan": "Purchase",
+    "purchaseHeader": "Liste des purchases",
+    "purchaseReference": "Reference",
+    "purchasePurchaseDate": "Purchase date",
+    "purchaseTotal": "Total",
+    "purchaseDescription": "Description",
+    "purchaseClient": "Client",
+    "purchasePurchaseItems": "Purchase items",
+    "Purchase items": "Purchase items",
+
+    "purchaseItemTabPan": "Purchase item",
+    "purchaseItemHeader": "Liste des purchase items",
+    "purchaseItemProduct": "Product",
+    "purchaseItemPrice": "Price",
+    "purchaseItemQuantity": "Quantity",
+    "purchaseItemPurchase": "Purchase",
+
+    "clientTabPan": "Client",
+    "clientHeader": "Liste des clients",
+    "clientFullName": "Full name",
+    "clientEmail": "Email",
+    "clientClientCategory": "Client category"
+}
+
+
