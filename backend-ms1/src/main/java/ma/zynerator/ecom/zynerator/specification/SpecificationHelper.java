@@ -208,6 +208,23 @@ public abstract class SpecificationHelper<Criteria extends BaseCriteria, H exten
         }
     }
 
+
+    public List<Long> getIds(List<? extends BaseCriteria> list) {
+        if(list == null){
+            return new ArrayList<>();
+        }else{
+            return list.stream().map(e->e.getId()).collect(Collectors.toList());
+        }
+    }
+    public void addPredicateFk(String nameObject,String nameAttribute, List<? extends  BaseCriteria> list) {
+        List<Long> ids = getIds(list);
+        if (ListUtil.isNotEmpty(ids) && ids.size() == 1) {
+            addPredicateFk(nameObject, nameAttribute,ids.get(0));
+        } else if (ListUtil.isNotEmpty(ids) && ids.size() > 1) {
+           predicates.add(root.get(nameObject).get(nameAttribute).in(ids));
+        }
+    }
+
     public void addPredicateFk(String nameObject, String nameAttribute, String value) {
         if (StringUtil.isNotEmpty(value)) {
             predicates.add(builder.equal(root.get(nameObject).get(nameAttribute), value));

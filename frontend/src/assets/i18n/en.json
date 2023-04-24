@@ -35,6 +35,7 @@
     "purchaseItemQuantity": "Quantity",
     "purchaseItemPurchase": "Purchase",
 
+    "client": "Client",
     "clientTabPan": "Client",
     "clientHeader": "Liste des clients",
     "clientFullName": "Full name",

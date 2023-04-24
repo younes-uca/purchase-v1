@@ -45,14 +45,14 @@
                             <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.totalMax" id="3-2"></p-inputNumber>
                             <label for="3-2">{{'Total' | translate}} Max</label>
                        </span>
+                       
                         <span class=" p-float-label mr-3 align-search-items mt-4">
-                            <input class="mr-2" pInputText id="4" type="text"  [(ngModel)]="criteria.descriptionLike">
-                            <label for="4">{{'Description' | translate}}</label>
-                        </span>
-                        <span class=" p-float-label mr-3 align-search-items mt-4">
-                            <p-dropdown [options]="clients" [(ngModel)]="criteria.client" id="5" [filter]="true"
-                                        [showClear]="true"  placeholder="{{'Client' | translate}}" optionLabel="fullName">
-                            </p-dropdown>
+<!--                            <p-dropdown [options]="clients" [(ngModel)]="criteria.client" id="5" [filter]="true"-->
+<!--                                        [showClear]="true"  defaultLabel="{{'client' | translate}}" optionLabel="fullName">-->
+<!--                            </p-dropdown>-->
+                             <p-multiSelect   appendTo="body" [options]="clients"  id="5" [(ngModel)]="criteria.clients" itemSize="30" [virtualScroll]="true"
+                                              defaultLabel="{{'client' | translate}}" optionLabel="fullName"  display="chip">
+                            </p-multiSelect>
                         </span>
                 </div>
 

@@ -21,6 +21,7 @@ public class PurchaseSpecification extends  AbstractSpecification<PurchaseCriter
         addPredicateBigDecimal("total", criteria.getTotal(), criteria.getTotalMin(), criteria.getTotalMax());
         addPredicateFk("client","id", criteria.getClient()==null?null:criteria.getClient().getId());
         addPredicateFk("client","email", criteria.getClient()==null?null:criteria.getClient().getEmail());
+        addPredicateFk("client","id", criteria.getClients());
     }
 
     public PurchaseSpecification(PurchaseCriteria criteria) {
