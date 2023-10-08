@@ -30,6 +30,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "@types/node": "^7.0.5",
+    "ang-jsoneditor": "^3.1.1",
     "chart.js": "^2.9.4",
     "exceljs": "^4.3.0",
     "file-saver": "^2.0.5",

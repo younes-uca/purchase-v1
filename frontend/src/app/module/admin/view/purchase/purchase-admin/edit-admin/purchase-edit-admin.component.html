@@ -30,9 +30,11 @@
 
                                         <div class="field col-12 md:col-6">
                                             <label for="4">{{'purchaseDescription' | translate}}</label>
-                                            <textarea appendTo="body" id="4" pInputTextarea rows="5" cols="30" placeholder="{{'purchaseDescription' | translate}}"  [(ngModel)]="item.description"
-                                                     ></textarea>
-                                            
+                                        <!--    <textarea appendTo="body" id="4" pInputTextarea rows="5" cols="30" placeholder="{{'purchaseDescription' | translate}}"  [(ngModel)]="item.description"
+                                                     ></textarea>-->
+                                            <json-editor id="4"  placeholder="{{'purchaseDescription' | translate}}"  [options]="options" [(ngModel)]="descriptionJSON"></json-editor>
+
+
                                         </div>
 
                                     <div class="field col-11 md:col-5">

@@ -54,7 +54,7 @@ public class EcomApplication {
     @Bean
     public CommandLineRunner demo(UserService userService, RoleService roleService) {
     return (args) -> {
-        if(true){
+        if(false){
 
             createProduct();
             createClientCategory();

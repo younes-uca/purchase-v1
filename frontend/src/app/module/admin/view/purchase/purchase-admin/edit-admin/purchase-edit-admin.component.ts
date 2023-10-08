@@ -1,9 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
-import {MenuItem} from 'primeng/api';
-import { environment } from 'src/environments/environment';
 import {DatePipe} from '@angular/common';
 
 import {AbstractEditController} from 'src/app/zynerator/controller/AbstractEditController';
@@ -21,12 +19,13 @@ import {ClientDto} from 'src/app/controller/model/Client.model';
 import {ClientService} from 'src/app/controller/service/Client.service';
 import {PurchaseItemDto} from 'src/app/controller/model/PurchaseItem.model';
 import {PurchaseItemService} from 'src/app/controller/service/PurchaseItem.service';
+import {JsonEditorComponent, JsonEditorOptions} from "ang-jsoneditor";
 
 @Component({
-  selector: 'app-purchase-edit-admin',
-  templateUrl: './purchase-edit-admin.component.html'
+    selector: 'app-purchase-edit-admin',
+    templateUrl: './purchase-edit-admin.component.html'
 })
-export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseDto, PurchaseCriteria, PurchaseService>   implements OnInit {
+export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseDto, PurchaseCriteria, PurchaseService> implements OnInit {
 
     private _purchaseItemsElement = new PurchaseItemDto();
 
@@ -37,69 +36,86 @@ export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseD
     private _validPurchaseItemsProduct = true;
     private _validPurchaseItemsPrice = true;
     private _validPurchaseItemsQuantity = true;
-
+    private descriptionJSON: FormData;
+    @ViewChild(JsonEditorComponent)
+    editor: JsonEditorComponent;
+    options = new JsonEditorOptions();
 
 
     constructor(private datePipe: DatePipe, private purchaseService: PurchaseService
-        , private stringUtilService: StringUtilService, private roleService: RoleService,  private messageService: MessageService
-        , private confirmationService: ConfirmationService, private router: Router  
-, private productService: ProductService, private clientService: ClientService, private purchaseItemService: PurchaseItemService
+        , private stringUtilService: StringUtilService, private roleService: RoleService, private messageService: MessageService
+        , private confirmationService: ConfirmationService, private router: Router
+        , private productService: ProductService, private clientService: ClientService, private purchaseItemService: PurchaseItemService
     ) {
         super(datePipe, purchaseService, messageService, confirmationService, roleService, router, stringUtilService);
+        this.options.mode = 'tree';
+        this.options.modes = ['code', 'text', 'tree', 'view'];
     }
 
     ngOnInit(): void {
         this.purchaseItemsElement.product = new ProductDto();
         this.productService.findAll().subscribe((data) => this.products = data);
 
-    this.client = new ClientDto();
-    this.clientService.findAll().subscribe((data) => this.clients = data);
-}
+        this.client = new ClientDto();
+        this.clientService.findAll().subscribe((data) => this.clients = data);
+        this.descriptionJSON = JSON.parse(this.item.description);
 
-    public validatePurchaseItems(){
+    }
+
+    public validatePurchaseItems() {
         this.errorMessages = new Array();
         this.validatePurchaseItemsProduct();
         this.validatePurchaseItemsPrice();
         this.validatePurchaseItemsQuantity();
     }
-    public setValidation(value : boolean){
+
+    public setValidation(value: boolean) {
         this.validPurchaseReference = value;
         this.validPurchaseItemsProduct = value;
         this.validPurchaseItemsPrice = value;
         this.validPurchaseItemsQuantity = value;
-        }
-   public addPurchaseItems() {
-        if( this.item.purchaseItems == null )
+    }
+
+    public addPurchaseItems() {
+        if (this.item.purchaseItems == null)
             this.item.purchaseItems = new Array<PurchaseItemDto>();
-       this.validatePurchaseItems();
-       if (this.errorMessages.length === 0) {
-            if(this.purchaseItemsElement.id == null){
+        this.validatePurchaseItems();
+        if (this.errorMessages.length === 0) {
+            if (this.purchaseItemsElement.id == null) {
                 this.item.purchaseItems.push(this.purchaseItemsElement);
-            }else{
+            } else {
                 const index = this.item.purchaseItems.findIndex(e => e.id == this.purchaseItemsElement.id);
                 this.item.purchaseItems[index] = this.purchaseItemsElement;
             }
-          this.purchaseItemsElement = new PurchaseItemDto();
-       }else{
-            this.messageService.add({severity: 'error',summary: 'Erreurs', detail: 'Merci de corrigé les erreurs suivant : ' + this.errorMessages});
+            this.purchaseItemsElement = new PurchaseItemDto();
+        } else {
+            this.messageService.add({
+                severity: 'error',
+                summary: 'Erreurs',
+                detail: 'Merci de corrigé les erreurs suivant : ' + this.errorMessages
+            });
         }
-   }
+    }
 
     public deletePurchaseItem(p: PurchaseItemDto) {
         this.item.purchaseItems.forEach((element, index) => {
-            if (element === p) { this.item.purchaseItems.splice(index, 1); }
+            if (element === p) {
+                this.item.purchaseItems.splice(index, 1);
+            }
         });
     }
 
     public editPurchaseItem(p: PurchaseItemDto) {
-        this.purchaseItemsElement = {... p};
+        this.purchaseItemsElement = {...p};
         this.activeTab = 0;
     }
-    public validateForm(): void{
+
+    public validateForm(): void {
         this.errorMessages = new Array<string>();
         this.validatePurchaseReference();
     }
-    public validatePurchaseReference(){
+
+    public validatePurchaseReference() {
         if (this.stringUtilService.isEmpty(this.item.reference)) {
             this.errorMessages.push('Reference non valide');
             this.validPurchaseReference = false;
@@ -109,25 +125,27 @@ export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseD
     }
 
 
-    private validatePurchaseItemsProduct(){
+    private validatePurchaseItemsProduct() {
         if (this.purchaseItemsElement.product == null) {
-        this.errorMessages.push('Product de la purchaseItem est  invalide');
+            this.errorMessages.push('Product de la purchaseItem est  invalide');
             this.validPurchaseItemsProduct = false;
         } else {
             this.validPurchaseItemsProduct = true;
         }
     }
-    private validatePurchaseItemsPrice(){
+
+    private validatePurchaseItemsPrice() {
         if (this.purchaseItemsElement.price == null) {
-        this.errorMessages.push('Price de la purchaseItem est  invalide');
+            this.errorMessages.push('Price de la purchaseItem est  invalide');
             this.validPurchaseItemsPrice = false;
         } else {
             this.validPurchaseItemsPrice = true;
         }
     }
-    private validatePurchaseItemsQuantity(){
+
+    private validatePurchaseItemsQuantity() {
         if (this.purchaseItemsElement.quantity == null) {
-        this.errorMessages.push('Quantity de la purchaseItem est  invalide');
+            this.errorMessages.push('Quantity de la purchaseItem est  invalide');
             this.validPurchaseItemsQuantity = false;
         } else {
             this.validPurchaseItemsQuantity = true;
@@ -135,47 +153,58 @@ export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseD
     }
 
 
-   get product(): ProductDto {
-       return this.productService.item;
-   }
-  set product(value: ProductDto) {
+    get product(): ProductDto {
+        return this.productService.item;
+    }
+
+    set product(value: ProductDto) {
         this.productService.item = value;
-   }
-   get products(): Array<ProductDto> {
+    }
+
+    get products(): Array<ProductDto> {
         return this.productService.items;
-   }
-   set products(value: Array<ProductDto>) {
+    }
+
+    set products(value: Array<ProductDto>) {
         this.productService.items = value;
-   }
-   get createProductDialog(): boolean {
-       return this.productService.createDialog;
-   }
-  set createProductDialog(value: boolean) {
-       this.productService.createDialog= value;
-   }
-   get client(): ClientDto {
-       return this.clientService.item;
-   }
-  set client(value: ClientDto) {
+    }
+
+    get createProductDialog(): boolean {
+        return this.productService.createDialog;
+    }
+
+    set createProductDialog(value: boolean) {
+        this.productService.createDialog = value;
+    }
+
+    get client(): ClientDto {
+        return this.clientService.item;
+    }
+
+    set client(value: ClientDto) {
         this.clientService.item = value;
-   }
-   get clients(): Array<ClientDto> {
+    }
+
+    get clients(): Array<ClientDto> {
         return this.clientService.items;
-   }
-   set clients(value: Array<ClientDto>) {
+    }
+
+    set clients(value: Array<ClientDto>) {
         this.clientService.items = value;
-   }
-   get createClientDialog(): boolean {
-       return this.clientService.createDialog;
-   }
-  set createClientDialog(value: boolean) {
-       this.clientService.createDialog= value;
-   }
+    }
+
+    get createClientDialog(): boolean {
+        return this.clientService.createDialog;
+    }
+
+    set createClientDialog(value: boolean) {
+        this.clientService.createDialog = value;
+    }
 
     get purchaseItemsElement(): PurchaseItemDto {
-        if( this._purchaseItemsElement == null )
+        if (this._purchaseItemsElement == null)
             this._purchaseItemsElement = new PurchaseItemDto();
-         return this._purchaseItemsElement;
+        return this._purchaseItemsElement;
     }
 
     set purchaseItemsElement(value: PurchaseItemDto) {
@@ -185,6 +214,7 @@ export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseD
     get validPurchaseReference(): boolean {
         return this._validPurchaseReference;
     }
+
     set validPurchaseReference(value: boolean) {
         this._validPurchaseReference = value;
     }
@@ -192,30 +222,39 @@ export class PurchaseEditAdminComponent extends AbstractEditController<PurchaseD
     get validClientFullName(): boolean {
         return this._validClientFullName;
     }
+
     set validClientFullName(value: boolean) {
         this._validClientFullName = value;
     }
+
     get validClientEmail(): boolean {
         return this._validClientEmail;
     }
+
     set validClientEmail(value: boolean) {
         this._validClientEmail = value;
     }
+
     get validPurchaseItemsProduct(): boolean {
         return this._validPurchaseItemsProduct;
     }
+
     set validPurchaseItemsProduct(value: boolean) {
         this._validPurchaseItemsProduct = value;
     }
+
     get validPurchaseItemsPrice(): boolean {
         return this._validPurchaseItemsPrice;
     }
+
     set validPurchaseItemsPrice(value: boolean) {
         this._validPurchaseItemsPrice = value;
     }
+
     get validPurchaseItemsQuantity(): boolean {
         return this._validPurchaseItemsQuantity;
     }
+
     set validPurchaseItemsQuantity(value: boolean) {
         this._validPurchaseItemsQuantity = value;
     }
